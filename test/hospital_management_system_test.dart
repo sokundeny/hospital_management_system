@@ -1,4 +1,4 @@
-import 'package:hospital_management_system/hospital_management_system.dart';
+import 'package:hospital_management_system/main.dart';
 import 'package:test/test.dart';
 
 void main() {

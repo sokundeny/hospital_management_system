@@ -1,0 +1,62 @@
+{
+  "doctors": [
+    {
+      "id": "D1",
+      "name": "deny",
+      "gender": "Male",
+      "dob": "2005-01-01T00:00:00.000",
+      "contactInfo": "012345678",
+      "specialty": "heart"
+    },
+    {
+      "id": "D2",
+      "name": "methy",
+      "gender": "Male",
+      "dob": "2005-01-01T00:00:00.000",
+      "contactInfo": "012345678",
+      "specialty": "heart"
+    },
+    {
+      "id": "D3",
+      "name": "thea",
+      "gender": "male",
+      "dob": "2025-12-12T00:00:00.000",
+      "contactInfo": "012345678",
+      "specialty": "12"
+    }
+  ],
+  "patients": [
+    {
+      "id": "P1",
+      "name": "Deny",
+      "gender": "Male",
+      "dob": "2005-01-01T00:00:00.000",
+      "contactInfo": "012345678",
+      "illness": "String"
+    },
+    {
+      "id": "P2",
+      "name": "methy",
+      "gender": "Male",
+      "dob": "2005-01-01T00:00:00.000",
+      "contactInfo": "012345678",
+      "illness": "heart"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "A1",
+      "doctorId": "D1",
+      "patientId": "P1",
+      "time": "2027-12-12T12:12:00.000",
+      "status": "scheduled"
+    },
+    {
+      "id": "A2",
+      "doctorId": "D3",
+      "patientId": "P1",
+      "time": "2027-12-12T12:12:00.000",
+      "status": "scheduled"
+    }
+  ]
+}
