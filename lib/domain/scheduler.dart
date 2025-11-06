@@ -10,24 +10,44 @@ class Scheduler {
 
   Scheduler();
 
-  String scheduleAppointment(String patientId,String doctorId,DateTime time){
-    if (time.month < 1 || time.month > 12) {
-      return "Invalid month: must be between 1 and 12.";
-    }
-
-    if (time.day < 1 || time.day > 31) {
-      return "Invalid day: must be between 1 and 31.";
-    }
-
-    DateTime now = DateTime.now();
-    if (!time.isAfter(now)) {
-      return "Invalid date: must be after the current time.";
-    }
-    Appointment newAppointment=Appointment(doctorId: doctorId, patientId: patientId, time: time);
-    appointments.add(newAppointment);
-
-    return "Appointment scheduled successfully!";
+ String scheduleAppointment(String patientId, String doctorId, DateTime time) {
+  if (time.month < 1 || time.month > 12) {
+    return "Invalid month: must be between 1 and 12.";
   }
+
+  if (time.day < 1 || time.day > 31) {
+    return "Invalid day: must be between 1 and 31.";
+  }
+
+  DateTime now = DateTime.now();
+  if (!time.isAfter(now)) {
+    return "Invalid date: must be after the current time.";
+  }
+  final doctorExists = doctors.any((d) => d.id == doctorId);
+  if (!doctorExists) {
+    return "Error: Doctor not found.";
+  }
+  final patientExists = patients.any((p) => p.id == patientId);
+  if (!patientExists) {
+    return "Error: Patient not found.";
+  }
+  final conflict = appointments.any((a) =>
+      a.doctorId == doctorId &&
+      a.time.isAtSameMomentAs(time) &&
+      a.status == AppointmentStatus.scheduled);
+  if (conflict) {
+    return "Error: Doctor already has an appointment at this time.";
+  }
+  Appointment newAppointment = Appointment(
+    doctorId: doctorId,
+    patientId: patientId,
+    time: time,
+  );
+  appointments.add(newAppointment);
+
+  return "Appointment scheduled successfully!";
+}
+
 
   String cancelAppointment(String appointmentId){
 
@@ -61,27 +81,26 @@ class Scheduler {
   }
 
   void addDoctor(Doctor doctor){
+    if (doctor.name.isEmpty) return; // we are not allow to add doctor without name 
     doctors.add(doctor);
   }
 
   void addPatient(Patient patient){
+    if (patient.name.isEmpty) return; 
     patients.add(patient);
   }
 
   bool checkAvailability(String doctorId, DateTime dateTime) {
-    for (var appointment in appointments) {
-      if (appointment.doctorId == doctorId &&
-          appointment.status == AppointmentStatus.scheduled &&
-          appointment.time.year == dateTime.year &&
-          appointment.time.month == dateTime.month &&
-          appointment.time.day == dateTime.day &&
-          appointment.time.hour == dateTime.hour
-      ) {
-        return false;
-      }
+  for (var appointment in appointments) {
+    if (appointment.doctorId == doctorId &&
+        appointment.status == AppointmentStatus.scheduled &&
+        appointment.time.isAtSameMomentAs(dateTime)) {
+      return false; 
     }
-    return true;
   }
+  return true; 
+}
+
 
   String reSchedule(String appointmentId,DateTime dateTime){
     Appointment? appointment;
