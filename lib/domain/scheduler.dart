@@ -10,9 +10,23 @@ class Scheduler {
 
   Scheduler();
 
-  void scheduleAppointment(String patientId,String doctorId,DateTime time){
+  String scheduleAppointment(String patientId,String doctorId,DateTime time){
+    if (time.month < 1 || time.month > 12) {
+      return "Invalid month: must be between 1 and 12.";
+    }
+
+    if (time.day < 1 || time.day > 31) {
+      return "Invalid day: must be between 1 and 31.";
+    }
+
+    DateTime now = DateTime.now();
+    if (!time.isAfter(now)) {
+      return "Invalid date: must be after the current time.";
+    }
     Appointment newAppointment=Appointment(doctorId: doctorId, patientId: patientId, time: time);
     appointments.add(newAppointment);
+
+    return "Appointment scheduled successfully!";
   }
 
   String cancelAppointment(String appointmentId){
@@ -77,9 +91,22 @@ class Scheduler {
       }
     }
 
-  if (appointment == null) {
-    return "Appointment not found!";
-  }
+    if (appointment == null) {
+      return "Appointment not found!";
+    }
+
+    if (dateTime.month < 1 || dateTime.month > 12) {
+      return "Invalid month: must be between 1 and 12.";
+    }
+
+    if (dateTime.day < 1 || dateTime.day > 31) {
+      return "Invalid day: must be between 1 and 31.";
+    }
+
+    DateTime now = DateTime.now();
+    if (!dateTime.isAfter(now)) {
+      return "Invalid date: must be after the current time.";
+    }
 
     if(!checkAvailability(appointment.doctorId, dateTime)){
       return "Doctor is not available this time";

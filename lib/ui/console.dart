@@ -225,9 +225,9 @@ class AppointmentConsole{
       return "Doctor is not available at this time.";
     }
 
-    scheduler.scheduleAppointment(pId,dId,appointmentTime);
+    String result=scheduler.scheduleAppointment(pId,dId,appointmentTime);
 
-    return "Appointment scheduled successfully!";
+    return result;
   }
 
 

@@ -5,7 +5,7 @@ import 'package:hospital_management_system/domain/scheduler.dart';
 
 class Repository {
 
-  final filePath;
+  final String filePath;
 
   Repository(this.filePath);
 

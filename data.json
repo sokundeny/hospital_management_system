@@ -23,6 +23,14 @@
       "dob": "2025-12-12T00:00:00.000",
       "contactInfo": "012345678",
       "specialty": "12"
+    },
+    {
+      "id": "D4",
+      "name": "leab",
+      "gender": "male",
+      "dob": "2025-12-12T00:00:00.000",
+      "contactInfo": "01234567",
+      "specialty": "12"
     }
   ],
   "patients": [
@@ -49,13 +57,27 @@
       "doctorId": "D1",
       "patientId": "P1",
       "time": "2027-12-12T12:12:00.000",
-      "status": "scheduled"
+      "status": "completed"
     },
     {
       "id": "A2",
       "doctorId": "D3",
       "patientId": "P1",
       "time": "2027-12-12T12:12:00.000",
+      "status": "cancelled"
+    },
+    {
+      "id": "A3",
+      "doctorId": "D4",
+      "patientId": "P1",
+      "time": "2027-12-12T12:12:00.000",
+      "status": "scheduled"
+    },
+    {
+      "id": "A4",
+      "doctorId": "D3",
+      "patientId": "P2",
+      "time": "2025-12-12T12:12:00.000",
       "status": "scheduled"
     }
   ]
