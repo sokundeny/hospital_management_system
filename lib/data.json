@@ -1,0 +1,31 @@
+{
+  "doctors": [
+    {
+      "id": "D1",
+      "name": "Methy MUY",
+      "gender": "Male",
+      "dob": "2026-08-14T00:00:00.000",
+      "contactInfo": "0964172183",
+      "specialty": "4"
+    }
+  ],
+  "patients": [
+    {
+      "id": "P1",
+      "name": "Sok Bunleab",
+      "gender": "male",
+      "dob": "2025-03-03T00:00:00.000",
+      "contactInfo": "0964172184",
+      "illness": "3"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "A1",
+      "doctorId": "D1",
+      "patientId": "P1",
+      "time": "+022223-10-31T09:42:00.000",
+      "status": "cancelled"
+    }
+  ]
+}
